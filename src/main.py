@@ -1,5 +1,7 @@
 import sys
 import csv
+import os
+
 
 notes=[]
 try:
@@ -14,11 +16,12 @@ try:
             'contend':contend,
             'name':name
         })
-        print(notes)
-        with open("saved_notes.csv",'w',newline='') as saved_notes:
+        file_validation=os.path.isfile('saved_notes.csv')
+        with open("saved_notes.csv",'a',newline='') as saved_notes:
             header=['title','contend','name']
             writter=csv.DictWriter(saved_notes,fieldnames=header)
-
+            if not file_validation or saved_notes.tell()==0:
+                writter.writeheader()
 
             for note in notes:
                 writter.writerow(note)
