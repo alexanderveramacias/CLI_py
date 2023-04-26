@@ -1,4 +1,5 @@
 import sys
+import csv
 
 notes=[]
 try:
@@ -14,6 +15,13 @@ try:
             'name':name
         })
         print(notes)
+        with open("saved_notes.csv",'w',newline='') as saved_notes:
+            header=['title','contend','name']
+            writter=csv.DictWriter(saved_notes,fieldnames=header)
+
+
+            for note in notes:
+                writter.writerow(note)
 
     else: 
         print("create was not executed")
