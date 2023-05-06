@@ -44,4 +44,4 @@ if sys.argv[1] == "--read":
         for note in field_reader:
             print(colorama.Fore.GREEN + f'title: {note["title"]}')
             print(colorama.Fore.LIGHTMAGENTA_EX + f'contend: {note["contend"]}')
-
+            print("print innecesario")
